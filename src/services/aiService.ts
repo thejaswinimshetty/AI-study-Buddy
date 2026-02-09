@@ -36,7 +36,7 @@ export async function sendMessage(history: ChatMessage[], currentMessage: string
     }
 
     const model = genAI.getGenerativeModel({
-        model: "gemini-1.5-flash",
+        model: "gemini-2.0-flash",
         systemInstruction: SYSTEM_PROMPT
     });
 
@@ -62,7 +62,7 @@ export async function sendMessage(history: ChatMessage[], currentMessage: string
 }
 
 export async function generateQuiz(topic: string, fileData?: FileData, difficulty: string = 'medium', count: number = 5) {
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
     const prompt = `Generate a ${count}-question multiple choice quiz about "${topic}" with a difficulty level of "${difficulty}". 
   Provide the output in JSON format: { "questions": [{ "question": "...", "options": ["...", "..."], "answer": "..." }] }
   ${fileData ? "Base the quiz on the provided file content." : ""}`;
@@ -78,7 +78,7 @@ export async function generateQuiz(topic: string, fileData?: FileData, difficult
 }
 
 export async function generateFlashcards(topic: string, fileData?: FileData, count: number = 5) {
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
     const prompt = `Generate ${count} flashcards about "${topic}". 
   Provide the output in JSON format: { "flashcards": [{ "front": "...", "back": "..." }] }
   ${fileData ? "Base the flashcards on the provided file content." : ""}`;
